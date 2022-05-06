@@ -36,10 +36,17 @@ public class ToDoController {
        if(toDoDto.getId() != null){
            return toDoServiceInterface.saveToDo(toDoDto);
        }
-       throw new RuntimeException("This toDo doesn's exist");
+       throw new RuntimeException("This toDo doesn't exist");
 
    }
 
-  // @DeleteMapping("delete/todo/{id}")
-  //  public void delete(@PathVariable("id"))
+   @DeleteMapping("delete/todo/{id}")
+    public void delete(@PathVariable Long id){
+        toDoServiceInterface.deleteToDo(id);
+   }
+
+   @GetMapping(value = "/todo/{id}")
+    public ToDoDto getTodo(@PathVariable Long id){
+        return toDoServiceInterface.getToDoIdDto(id);
+   }
 }
